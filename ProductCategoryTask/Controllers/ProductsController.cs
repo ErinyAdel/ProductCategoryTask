@@ -45,7 +45,7 @@ namespace ProductCategoryTask.Controllers
             catch { return NotFound($"No product found with {id} ID!"); }
         }
 
-        [HttpGet("name/{name}")]
+        [HttpGet("name")]
         public async Task<IActionResult> GetByNameAsync(string name)
         {
             try
@@ -58,7 +58,7 @@ namespace ProductCategoryTask.Controllers
             catch { return NotFound("No product found with this name!"); }
         }
 
-        [HttpGet("contains/{name}")]
+        [HttpGet("contains")]
         public async Task<IActionResult> GetAllByNameAsync(string name)
         {
             try
