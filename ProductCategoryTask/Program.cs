@@ -17,6 +17,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddCors();
 
 builder.Services.AddTransient<ICategoriesService, CategoriesService>();
+builder.Services.AddTransient<IProductsService, ProductsService>();
 
 var app = builder.Build();
 
