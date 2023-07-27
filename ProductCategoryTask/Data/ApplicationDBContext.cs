@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ProductCategoryTask.Models;
 
 namespace ProductCategoryTask.Data
 {
@@ -11,5 +10,6 @@ namespace ProductCategoryTask.Data
         }
 
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Product> Products { get; set; }
     }
 }
