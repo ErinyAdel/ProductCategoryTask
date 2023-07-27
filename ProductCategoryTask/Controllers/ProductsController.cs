@@ -11,10 +11,12 @@ namespace ProductCategoryTask.Controllers
     public class ProductsController : ControllerBase
     {
         private readonly IProductsService _productsService;
+        private readonly ICategoriesService _categoriesService;
 
-        public ProductsController(IProductsService productsService)
+        public ProductsController(IProductsService productsService, ICategoriesService categoriesService)
         {
             _productsService = productsService;
+            _categoriesService = categoriesService;
         }
 
         [HttpGet]
@@ -88,10 +90,14 @@ namespace ProductCategoryTask.Controllers
         {
             try
             {
+                if (_categoriesService.GetCategoryById(dto.CategoryId).Result == null)
+                    return NotFound($"No category with {dto.CategoryId} ID");
+
                 var product = new Product { 
                     Name = dto.Name,
                     CategoryId = dto.CategoryId
                 };
+
                 await _productsService.AddProduct(product);
 
                 return Ok(product);
